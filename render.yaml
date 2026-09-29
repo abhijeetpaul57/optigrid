@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: optigrid-api
+    env: node
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 3000
+      - key: ENGINE_PATH
+        value: ../engine/build/optigrid_engine
+      - key: MONGODB_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: SOCKET_CORS_ORIGIN
+        sync: false

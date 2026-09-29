@@ -1,0 +1,96 @@
+.city-grid-wrapper {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+  padding: 0.75rem;
+}
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.grid-node {
+  position: relative;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  overflow: visible;
+}
+
+.grid-node:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+  z-index: 2;
+}
+
+.node-id {
+  font-size: 0.42rem;
+  color: rgba(255,255,255,0.18);
+  font-family: monospace;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+
+/* Route highlight */
+.grid-node.on-route {
+  background: rgba(59,130,246,0.2);
+  border-color: rgba(59,130,246,0.5);
+  animation: route-pulse 0.8s ease infinite alternate;
+}
+
+@keyframes route-pulse {
+  from { background: rgba(59,130,246,0.1); }
+  to   { background: rgba(59,130,246,0.35); }
+}
+
+/* Node types */
+.grid-node--resource-available { background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.2); }
+.grid-node--resource-busy      { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.2); }
+.grid-node--resource-selected  { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.6); box-shadow: 0 0 12px rgba(59,130,246,0.3); }
+.grid-node--request            { background: rgba(139,92,246,0.06); border-color: rgba(139,92,246,0.2); }
+.grid-node--request-selected   { background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.6); }
+
+/* Markers */
+.node-marker {
+  position: absolute;
+  font-size: 0.45rem;
+  font-weight: 700;
+  padding: 1px 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.resource-marker {
+  background: var(--success-color);
+  color: #000;
+  font-size: 0.5rem;
+}
+
+.resource-marker.busy {
+  background: var(--warning-color);
+  animation: busy-pulse 1.5s ease infinite;
+}
+
+@keyframes busy-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.request-marker {
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 0.45rem;
+}

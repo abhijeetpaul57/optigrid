@@ -1,0 +1,62 @@
+.metric-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.metric-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-card__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.metric-card__icon {
+  padding: 0.35rem;
+  border-radius: 6px;
+}
+
+.metric-card--primary .metric-card__icon { background: rgba(59,130,246,0.12); color: var(--primary-color); }
+.metric-card--success .metric-card__icon { background: rgba(16,185,129,0.12); color: var(--success-color); }
+.metric-card--warning .metric-card__icon { background: rgba(245,158,11,0.12); color: var(--warning-color); }
+.metric-card--accent  .metric-card__icon { background: rgba(139,92,246,0.12); color: var(--accent-color); }
+
+.metric-card__value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.metric-card__unit {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 2px;
+}
+
+.metric-card__trend {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.metric-card__trend.up   { color: var(--success-color); }
+.metric-card__trend.down { color: var(--error-color); }
