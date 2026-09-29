@@ -3,6 +3,7 @@ services:
     name: optigrid-api
     env: node
     rootDir: server
+    plan: free
     buildCommand: cd ../engine && make && cd ../server && npm install
     startCommand: node src/server.js
     envVars:
